@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h2>Login API Tester</h2>
+    <p>Send credentials to Node.js to receive your JWT token.</p>
+
+    <form id="loginForm">
+        <div>
+            <label>Email Address:</label><br>
+            <input type="email" id="loginEmail" required>
+        </div><br>
+
+        <div>
+            <label>Password:</label><br>
+            <input type="password" id="loginPassword" required>
+        </div><br>
+
+        <button type="submit">Log In</button>
+    </form>
+
+    <br>
+    <a href="forgot-password.html">Forgot Password?</a><br>
+    <a href="register.html">Don't have an account? Register here</a>
+
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

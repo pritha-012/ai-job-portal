@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h2>Register</h2>
+    <p>Fill this out to send a POST request to your Node.js server.</p>
+
+    <form id="registerForm">
+        <div>
+            <label>Full Name:</label><br>
+            <input type="text" id="name" required>
+        </div><br>
+
+        <div>
+            <label>Email Address:</label><br>
+            <input type="email" id="email" required>
+        </div><br>
+
+        <div>
+            <label>Password:</label><br>
+            <input type="password" id="password" required>
+        </div><br>
+
+        <div>
+            <label>Confirm Password:</label><br>
+            <input type="password" id="confirmPassword" required>
+        </div><br>
+
+        <div>
+            <label>Account Type:</label><br>
+            <select id="role" required>
+                <option value="seeker">Job Seeker</option>
+                <option value="recruiter">Recruiter</option>
+            </select>
+        </div><br>
+
+        <div>
+            <label>Skills (Comma Separated):</label><br>
+            <input type="text" id="skills" placeholder="Node.js, React, MongoDB">
+        </div><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <a href="index.html">Go to Login Page</a>
+
+
+</body>
+</html>
