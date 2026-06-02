@@ -4,7 +4,7 @@ import { register, login,getCode,
     resetPassword, getMe } from '../controllers/auth.controllers.js';
 import { validateRegister, validateLogin } from '../validations/auth.validations.js';
 import { responseTransformer } from "../transformers/response.transformers.js";
-import { protect,authorize } from '../middlewares/auth.middlewares.js';
+import { protect,authorizeRoles } from '../middlewares/auth.middlewares.js';
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.post('/forgot-password/verifycode', verifyCode, responseTransformer);
 
 // Step 3: Set the new password
 router.post('/forgot-password/resetcode',resetPassword, responseTransformer);
-router.get('/me', protect,authorize('recruiter'), getMe, responseTransformer);
+router.get('/me', protect,authorizeRoles('recruiter'), getMe, responseTransformer);
 
 
 export default router;

@@ -5,3 +5,6 @@ export const findJobsByRecruiter = (recruiterId) => Job.find({ postedBy: recruit
 export const findJobById = (id) => Job.findById(id).populate('postedBy', 'name email role');
 export const updateJobById = (id, data) => Job.findByIdAndUpdate(id, data, { returnDocument: 'after' });
 export const deleteJobById = (id) => Job.findByIdAndDelete(id);
+export const countTotalJobsByRecruiter = (recruiterId) => Job.countDocuments({ postedBy: recruiterId });
+// Note: Change `isActive: true` if your schema uses something else, like `status: 'active'`
+export const countActiveJobsByRecruiter = (recruiterId) => Job.countDocuments({ postedBy: recruiterId, isActive: true });

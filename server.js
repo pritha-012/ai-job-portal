@@ -5,7 +5,8 @@ import express from 'express';
 import cors from 'cors';
 import connectDB from './src/config/db.js'; 
 import authRoutes from './src/routes/auth.routes.js';
-import jobRoutes from './src/routes/job.routes.js'; // 👈 Add this line
+import jobRoutes from './src/routes/job.routes.js'; 
+import applicationRoutes from './src/routes/application.routes.js';
 
 // Initialize Express App
 const app = express();
@@ -28,7 +29,8 @@ app.get('/', (req, res) => {
     });
 });
 app.use('/api/auth', authRoutes);
-app.use('/api/jobs', jobRoutes)
+app.use('/api/jobs', jobRoutes);
+app.use('/api/applications', applicationRoutes); // 👈 Add this line
 
 // Start Server
 const PORT = process.env.PORT || 5000;

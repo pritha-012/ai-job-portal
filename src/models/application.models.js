@@ -16,7 +16,11 @@ const applicationSchema = new mongoose.Schema(
       type: String,
       required: true, // Path to the uploaded PDF file
     },
-    // --- AI GENERATED FIELDS ---
+    coverLetter: {
+      type: String,
+      trim: true, // Automatically removes accidental blank spaces at the beginning or end
+      default: "", // Ensures it saves as an empty string instead of 'null' if they skip it
+    },
     aiMatchScore: {
       type: Number,
       min: 0,

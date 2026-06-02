@@ -91,3 +91,28 @@ export const getJobById = async (req, res) => {
         });
     }
 };
+// Add this to the bottom of your src/controllers/jobController.js file
+
+export const getJobStats = async (req, res) => {
+    try {
+        // req.user._id comes from your protect middleware
+        const recruiterId = req.user._id;
+        console.log("🔍 Searching for jobs posted by:", recruiterId);
+
+        // 1. Call your Service layer
+        const statsData = await jobService.getRecruiterStats(recruiterId);
+
+        // 2. Return the clean data to the frontend
+        res.status(200).json({
+            success: true,
+            message: "Dashboard stats retrieved successfully",
+            data: statsData
+        });
+
+    } catch (error) {
+        res.status(500).json({ 
+            success: false, 
+            message: error.message || "Server error while fetching stats" 
+        });
+    }
+};

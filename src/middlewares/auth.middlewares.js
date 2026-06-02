@@ -44,26 +44,13 @@ export const protect = async (req, res, next) => {
 };
 
 // 2. Check if the user has the right role
-export const authorize = (...roles) => {
-    return (req, res, next) => {
-        // req.user was set in the `protect` middleware above
-        if (!roles.includes(req.user.role)) {
-            return res.status(STATUS_CODES.FORBIDDEN).json({
-                success: false,
-                message: `User role '${req.user.role}' is not authorized to perform this action.`
-            });
-        }
-        next();
-    };
-};
-
 export const authorizeRoles = (...roles) => {
     return (req, res, next) => {
         // req.user is set by your protect middleware right before this runs
-        if (!req.user.role || !roles.includes(req.user.role)) {
-            return res.status(403).json({
+        if (!req.user || !req.user.role || !roles.includes(req.user.role)) {
+            return res.status(STATUS_CODES.FORBIDDEN).json({
                 success: false,
-                message: `User role '${req.user.role || 'undefined'}' is not authorized to access this route.`
+                message: `User role '${req.user?.role || 'undefined'}' is not authorized to access this route.`
             });
         }
         next(); 
